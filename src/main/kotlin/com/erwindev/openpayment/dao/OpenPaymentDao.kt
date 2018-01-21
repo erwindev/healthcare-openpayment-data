@@ -4,7 +4,6 @@ import com.erwindev.openpayment.domain.OpenPayment
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.RowMapper
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert
 import org.springframework.stereotype.Repository
 import java.sql.ResultSet
 import java.sql.SQLException
@@ -20,22 +19,19 @@ class OpenPaymentDao {
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 
-    fun insert(openPayment: OpenPayment){
-        SimpleJdbcInsert(jdbcTemplate)
-                .withTableName("open_payment")
-                .apply {
-                    setGeneratedKeyName("id")
-                    execute(
-                            mapOf(
-                                    "provider_id" to openPayment.providerId,
-                                    "provider_name" to openPayment.providerName,
-                                    "payment_amount" to openPayment.paymentAmount,
-                                    "payer_id" to openPayment.payerId,
-                                    "payer_name" to openPayment.payerName
-                            )
-                    )
-                }
-    }
+    fun insert(openPayment: OpenPayment) =  jdbcTemplate.update(
+            """INSERT INTO open_payment (
+                provider_id,
+                provider_name,
+                payment_amount,
+                payer_id,
+                payer_name) VALUES (?, ?, ?, ?, ?)""",
+            openPayment.providerId,
+            openPayment.providerName,
+            openPayment.paymentAmount,
+            openPayment.payerId,
+            openPayment.payerName)
+
 
     fun findAll(): List<OpenPayment> = jdbcTemplate.query(
             """SELECT id,
