@@ -14,7 +14,7 @@ class OpenPaymentService {
     lateinit var openPaymentDao: OpenPaymentDao
 
     fun addOpenPayment(openPayment: OpenPayment){
-        openPaymentDao.insertx(openPayment)
+        openPaymentDao.insert(openPayment)
     }
 
     fun findAllOpenPayments(): List<OpenPayment> = openPaymentDao.findAll()
