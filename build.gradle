@@ -37,7 +37,6 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    compile "org.springframework.boot:spring-boot-starter:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"){
         exclude module: 'tomcat-jdbc'
