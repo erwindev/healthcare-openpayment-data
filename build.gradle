@@ -7,7 +7,7 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    ext.kotlin_version = '1.1.2'
+    ext.kotlin_version = '1.2.10'
     ext.springBootVersion = '1.5.9.RELEASE'
 
     repositories {
