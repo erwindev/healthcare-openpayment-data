@@ -13,6 +13,6 @@ projectlocation/build/libs
 ```
 You will then need to run the jar using the following command
 ```
-java -jar build/libs/nameofproject-0.1.0.jar
+java -jar build/libs/healthcare-openpayment-data-1.0.jar
 ```
 
