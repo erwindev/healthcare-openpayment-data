@@ -3,16 +3,20 @@ This project shows how to write a Spring Boot Microservices using Kotlin.  To ge
 
 ## How to run this application
 
-You will need to duild the application.
+You will need to build the application.
 ```
-gradle assemble
+$ gradle assemble
 ```
 The command will generate healthcare-openpayment-data-1.0.jar** under
 ```
-projectlocation/build/libs
+$ projectlocation/build/libs
 ```
 You will then need to run the jar using the following command
 ```
-java -jar build/libs/healthcare-openpayment-data-1.0.jar
+$ java -jar build/libs/healthcare-openpayment-data-1.0.jar
 ```
 
+You can also run the unit tests as well as the Cucumber tests.
+```
+$ gradle build
+```
