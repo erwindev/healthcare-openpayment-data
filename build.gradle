@@ -24,7 +24,7 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'spring-boot'
 apply plugin: 'kotlin-spring'
 
 repositories {
@@ -45,8 +45,12 @@ dependencies {
     compile "io.springfox:springfox-swagger-ui:2.7.0"
     compile "com.opencsv:opencsv:4.1"
     compile "com.google.code.gson:gson:2.8.2"
+    compile "io.cucumber:cucumber-spring:2.3.1"
+    compile "io.cucumber:cucumber-java8:2.3.1"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testCompile "io.cucumber:cucumber-junit:2.3.1"
+
 }
 
 jar {
