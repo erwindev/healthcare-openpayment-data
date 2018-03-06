@@ -1,5 +1,4 @@
 .DS_Store
-.idea/shelf
 /android.tests.dependencies
 /confluence/target
 /dependencies
@@ -12,7 +11,6 @@ out/
 /tmp
 workspace.xml
 *.versionsBackup
-/idea/testData/debugger/tinyApp/classes*
 /jps-plugin/testData/kannotator
 /ultimate/dependencies
 /ultimate/ideaSDK
@@ -26,14 +24,4 @@ build/
 !**/test/**/build
 *.iml
 !**/testData/**/*.iml
-.idea/libraries/Gradle*.xml
-.idea/libraries/Maven*.xml
-.idea/modules
-.idea/modules.xml
-.idea/gradle.xml
-.idea/compiler.xml
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/.name
-.idea/misc.xml
-.idea/preferred-vcs.xml
-.idea/vcs.xml
+.idea/

@@ -10,6 +10,7 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.TestPropertySource
 
 /**
  * Created by erwinalberto on 3/5/18.
@@ -17,8 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner::class)
-
+@TestPropertySource(locations=arrayOf("classpath:application-test.properties"))
 class StepDefs : En {
 
     @Autowired
