@@ -31,9 +31,9 @@ class OpenPaymentDaoTest {
 
         openPaymentDao.insert(openPayment)
 
-        var savedOpenPayment = openPaymentDao.findById(3)
+        var savedOpenPayment = openPaymentDao.findByProviderId("1234")
 
-        assertEquals(openPayment.providerId, savedOpenPayment.providerId)
+        assertEquals(openPayment.providerId, savedOpenPayment[0].providerId)
     }
 
 }
