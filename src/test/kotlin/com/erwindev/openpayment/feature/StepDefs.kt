@@ -1,14 +1,11 @@
 package com.erwindev.openpayment.feature
 
-import com.erwindev.openpayment.Application
 import com.erwindev.openpayment.domain.OpenPayment
 import com.erwindev.openpayment.service.OpenPaymentService
 import cucumber.api.java8.En
 import org.junit.Assert
 
-import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.TestPropertySource
 

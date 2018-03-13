@@ -10,6 +10,6 @@ import org.junit.runner.RunWith
 
 @RunWith(Cucumber::class)
 @CucumberOptions(
-        features = ["src/test/resources/cucumber/features"],
+        features = ["src/test/resources/cucumber/features/openpayment.feature"],
         tags = ["not @ignored"])
 class OpenPaymentCucumberTest
