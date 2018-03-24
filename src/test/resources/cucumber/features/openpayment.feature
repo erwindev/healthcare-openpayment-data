@@ -1,6 +1,6 @@
-Feature: Openpayment API
+Feature: Get payments to providers
 
-    Scenario: Provider Openpayments
+    Scenario: Get payments
         Given I have "132655" provider id
         When I ask for all the payments
         Then I receive 2 payments
