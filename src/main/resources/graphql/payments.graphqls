@@ -1,0 +1,12 @@
+type OpenPayment {
+    id: Long!
+    providerId: String!
+    providerName: String!
+    paymentAmount: Float!
+    payerId: String!
+    payerName: String!
+}
+
+extend type Query {
+    getPayments: [OpenPayment]!
+}

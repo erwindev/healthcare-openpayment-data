@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @Api(value = "openpayment", description = "OpenPayment API")
-@RequestMapping(value="/api/openpayment/v1")
+@RequestMapping(value=["/api/openpayment/v1"])
 class MainController{
 
     @Autowired
@@ -25,8 +25,7 @@ class MainController{
 
     @GetMapping("/payments")
     fun payments(): List<OpenPayment> {
-        var payments: List<OpenPayment> = openPaymentService.findAllOpenPayments()
-        return payments
+        return openPaymentService.findAllOpenPayments()
     }
 
     @GetMapping("/provider-payment/{providerId}")

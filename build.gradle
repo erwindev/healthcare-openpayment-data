@@ -7,8 +7,8 @@ task wrapper(type: Wrapper) {
 }
 
 buildscript {
-    ext.kotlin_version = '1.2.10'
-    ext.springBootVersion = '1.5.9.RELEASE'
+    ext.kotlin_version = '1.2.31'
+    ext.springBootVersion = '2.0.0.RELEASE'
 
     repositories {
         mavenCentral()
@@ -24,7 +24,7 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin-spring'
 
 repositories {
@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     compile("org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"){
@@ -47,6 +47,9 @@ dependencies {
     compile "com.google.code.gson:gson:2.8.2"
     compile "io.cucumber:cucumber-spring:2.3.1"
     compile "io.cucumber:cucumber-java8:2.3.1"
+    compile "com.graphql-java:graphiql-spring-boot-starter:4.0.0"
+    compile "com.graphql-java:graphql-java-tools:4.3.0"
+    compile "com.graphql-java:graphql-spring-boot-starter:4.0.0"
 
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testCompile "io.cucumber:cucumber-junit:2.3.1"

@@ -10,6 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import java.io.FileReader
 import com.opencsv.enums.CSVReaderNullFieldIndicator
 import com.opencsv.CSVReaderBuilder
+import graphql.Scalars
+import graphql.schema.GraphQLObjectType
+import graphql.schema.GraphQLSchema
+import org.springframework.context.annotation.Bean
+
 
 /**
  * Created by erwinalberto on 1/5/18.
@@ -47,3 +52,4 @@ class Application: CommandLineRunner{
 fun main(args: Array<String>) {
      SpringApplication.run(Application::class.java, *args)
 }
+
