@@ -7,7 +7,7 @@ data class OpenPayment(
         val id: Long? = null,
         val providerId: String,
         val providerName: String,
-        val paymentAmount: Number,
+        val paymentAmount: Float,
         val payerId: String,
         val payerName: String
 )

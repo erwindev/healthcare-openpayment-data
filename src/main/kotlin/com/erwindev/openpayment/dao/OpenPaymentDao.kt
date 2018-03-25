@@ -7,7 +7,11 @@ import org.springframework.jdbc.core.RowMapper
 import org.springframework.stereotype.Repository
 import java.sql.ResultSet
 import java.sql.SQLException
-
+import java.sql.PreparedStatement
+import org.springframework.jdbc.core.PreparedStatementCreator
+import org.springframework.jdbc.support.GeneratedKeyHolder
+import org.springframework.jdbc.support.KeyHolder
+import java.sql.Connection
 
 
 /**
@@ -19,18 +23,31 @@ class OpenPaymentDao {
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 
-    fun insert(openPayment: OpenPayment) =  jdbcTemplate.update(
-            """INSERT INTO open_payment (
+    fun insert(openPayment: OpenPayment): Long{
+        val INSERT_SQL = """INSERT INTO open_payment (
                 provider_id,
                 provider_name,
                 payment_amount,
                 payer_id,
-                payer_name) VALUES (?, ?, ?, ?, ?)""",
-            openPayment.providerId,
-            openPayment.providerName,
-            openPayment.paymentAmount,
-            openPayment.payerId,
-            openPayment.payerName)
+                payer_name) VALUES (?, ?, ?, ?, ?)"""
+
+        val keyHolder = GeneratedKeyHolder()
+        val update = jdbcTemplate.update(
+                object : PreparedStatementCreator {
+                    @Throws(SQLException::class)
+                    override fun createPreparedStatement(connection: Connection): PreparedStatement {
+                        val ps = connection.prepareStatement(INSERT_SQL, arrayOf("id"))
+                        ps.setString(1, openPayment.providerId)
+                        ps.setString(2, openPayment.providerName)
+                        ps.setFloat(3, openPayment.paymentAmount)
+                        ps.setString(4, openPayment.payerId)
+                        ps.setString(5, openPayment.payerName)
+                        return ps
+                    }
+                },
+                keyHolder)
+        return keyHolder.key.toLong()
+    }
 
 
     fun findAll(): List<OpenPayment> = jdbcTemplate.query(
@@ -47,7 +64,7 @@ class OpenPaymentDao {
                             rs.getLong("id"),
                             rs.getString("provider_id"),
                             rs.getString("provider_name"),
-                            rs.getBigDecimal("payment_amount"),
+                            rs.getFloat("payment_amount"),
                             rs.getString("payer_id"),
                             rs.getString("payer_name"))
             })
@@ -67,7 +84,7 @@ class OpenPaymentDao {
                         rs.getLong("id"),
                         rs.getString("provider_id"),
                         rs.getString("provider_name"),
-                        rs.getBigDecimal("payment_amount"),
+                        rs.getFloat("payment_amount"),
                         rs.getString("payer_id"),
                         rs.getString("payer_name"))
         }
@@ -87,7 +104,7 @@ class OpenPaymentDao {
                 rs.getLong("id"),
                 rs.getString("provider_id"),
                 rs.getString("provider_name"),
-                rs.getBigDecimal("payment_amount"),
+                rs.getFloat("payment_amount"),
                 rs.getString("payer_id"),
                 rs.getString("payer_name"))
     }
@@ -116,7 +133,7 @@ private class OpenPaymentMapper : RowMapper<OpenPayment> {
                 rs.getLong("id"),
                 rs.getString("provider_id"),
                 rs.getString("provider_name"),
-                rs.getBigDecimal("payment_amount"),
+                rs.getFloat("payment_amount"),
                 rs.getString("payer_id"),
                 rs.getString("payer_name"))
         return openPayment

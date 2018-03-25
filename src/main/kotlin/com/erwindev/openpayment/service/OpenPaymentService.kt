@@ -13,15 +13,16 @@ class OpenPaymentService {
     @Autowired
     lateinit var openPaymentDao: OpenPaymentDao
 
-    fun addOpenPayment(openPayment: OpenPayment){
-        openPaymentDao.insert(openPayment)
+    fun addOpenPayment(openPayment: OpenPayment): OpenPayment{
+        var id = openPaymentDao.insert(openPayment)
+        return findOpenPayment(id)
     }
 
     fun findAllOpenPayments(): List<OpenPayment> = openPaymentDao.findAll()
 
     fun findProviderOpenPayments(providerId: String): List<OpenPayment> = openPaymentDao.findByProviderId(providerId)
 
-    fun findPayerOpenPayments(paymentId: String): List<OpenPayment> = openPaymentDao.findByPayerId(paymentId)
+    fun findPayerOpenPayments(payerId: String): List<OpenPayment> = openPaymentDao.findByPayerId(payerId)
 
-    fun findOpenPayment(id: Number): OpenPayment = openPaymentDao.findById(id)
+    fun findOpenPayment(paymentId: Long): OpenPayment = openPaymentDao.findById(paymentId)
 }

@@ -7,6 +7,22 @@ type OpenPayment {
     payerName: String!
 }
 
-extend type Query {
+type PaymentQueries{
     getPayments: [OpenPayment]!
+    getPayment(id: Long!) : OpenPayment!
+    getPaymentsByPayer(payerId: String!) : [OpenPayment]!
+    getPaymentsToProviders(providerId: String!) : [OpenPayment]!
+}
+
+type PaymentMutations{
+    newPayment(providerId: String,
+               providerName: String,
+               paymentAmount: Float,
+               payerId: String,
+               payerName: String,): OpenPayment
+}
+
+schema{
+    query: PaymentQueries
+    mutation: PaymentMutations
 }

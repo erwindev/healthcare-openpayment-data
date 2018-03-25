@@ -1,4 +1,4 @@
-package com.erwindev.openpayment.graphql
+package com.erwindev.openpayment.resolver
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import org.springframework.stereotype.Component
