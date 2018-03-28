@@ -10,7 +10,6 @@ import java.sql.SQLException
 import java.sql.PreparedStatement
 import org.springframework.jdbc.core.PreparedStatementCreator
 import org.springframework.jdbc.support.GeneratedKeyHolder
-import org.springframework.jdbc.support.KeyHolder
 import java.sql.Connection
 
 
@@ -32,7 +31,7 @@ class OpenPaymentDao {
                 payer_name) VALUES (?, ?, ?, ?, ?)"""
 
         val keyHolder = GeneratedKeyHolder()
-        val update = jdbcTemplate.update(
+        jdbcTemplate.update(
                 object : PreparedStatementCreator {
                     @Throws(SQLException::class)
                     override fun createPreparedStatement(connection: Connection): PreparedStatement {

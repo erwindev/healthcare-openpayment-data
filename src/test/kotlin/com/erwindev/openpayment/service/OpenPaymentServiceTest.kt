@@ -25,7 +25,7 @@ class OpenPaymentServiceTest {
                 OpenPayment(id=1,
                         providerId = "1234",
                         providerName = "Dr. Jack",
-                        paymentAmount = 94.30,
+                        paymentAmount = "94.30".toFloat(),
                         payerId = "12399393",
                         payerName = "Walgreens")
 
